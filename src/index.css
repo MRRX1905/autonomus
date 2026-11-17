@@ -1,0 +1,232 @@
+:root {
+  color-scheme: light dark;
+  --bg: #f6f7f5;
+  --surface: #ffffff;
+  --border: #dfe3dc;
+  --text: #17201a;
+  --muted: #5c675e;
+  --accent: #1f6b45;
+  --accent-soft: #e3f1e8;
+  --warning: #8a5a00;
+  --warning-soft: #fdf3dd;
+  --shadow: 0 1px 2px rgb(23 32 26 / 6%), 0 12px 32px rgb(23 32 26 / 6%);
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  line-height: 1.55;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #111613;
+    --surface: #18211b;
+    --border: #2c3a31;
+    --text: #e8efe9;
+    --muted: #a3b1a6;
+    --accent: #7bc79b;
+    --accent-soft: #1e3326;
+    --warning: #f0c169;
+    --warning-soft: #33290f;
+    --shadow: none;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background:
+    radial-gradient(circle at top left, var(--accent-soft), transparent 40rem),
+    var(--bg);
+  color: var(--text);
+}
+
+code {
+  font-family: ui-monospace, 'Cascadia Code', Consolas, monospace;
+  font-size: 0.9em;
+  background: color-mix(in srgb, var(--border) 45%, transparent);
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+  overflow-wrap: anywhere;
+}
+
+.shell {
+  width: min(880px, 100% - 2rem);
+  margin: 0 auto;
+  padding: clamp(1.5rem, 4vw, 3.5rem) 0 2rem;
+  display: grid;
+  gap: 1.25rem;
+}
+
+.masthead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.brand {
+  display: flex;
+  gap: 0.9rem;
+  align-items: flex-start;
+}
+
+.brand-mark {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  flex: 0 0 auto;
+  border-radius: 10px;
+  background: var(--accent);
+  color: var(--surface);
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+h1,
+h2,
+p {
+  margin: 0;
+}
+
+h1 {
+  font-size: 1.6rem;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.masthead p {
+  color: var(--muted);
+  max-width: 48ch;
+}
+
+h2 {
+  font-size: 1.05rem;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.4rem;
+}
+
+.pill {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.25rem 0.7rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+  background: var(--surface);
+  white-space: nowrap;
+}
+
+.pill-ok {
+  color: var(--accent);
+  border-color: color-mix(in srgb, var(--accent) 35%, var(--border));
+}
+
+.pill-recovered {
+  color: var(--warning);
+  border-color: color-mix(in srgb, var(--warning) 45%, var(--border));
+}
+
+main {
+  display: grid;
+  gap: 1rem;
+}
+
+.card,
+.notice {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: clamp(1rem, 3vw, 1.5rem);
+  box-shadow: var(--shadow);
+}
+
+.notice {
+  border-color: color-mix(in srgb, var(--warning) 50%, var(--border));
+  background: var(--warning-soft);
+}
+
+.notice h2 {
+  color: var(--warning);
+}
+
+.notice p {
+  color: var(--text);
+}
+
+.muted,
+.facts {
+  color: var(--muted);
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+  gap: 0.75rem;
+  margin: 1.1rem 0 0;
+}
+
+.stats div {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.75rem 0.9rem;
+}
+
+.stats dt {
+  color: var(--muted);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.stats dd {
+  margin: 0.15rem 0 0;
+  font-size: 1.6rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+
+.facts {
+  margin: 0.75rem 0 1.1rem;
+  padding-left: 1.1rem;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.button {
+  font: inherit;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
+  border-radius: 8px;
+  padding: 0.5rem 0.9rem;
+  cursor: pointer;
+}
+
+.button:hover:not(:disabled) {
+  border-color: var(--warning);
+  color: var(--warning);
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem;
+  color: var(--muted);
+  font-size: 0.82rem;
+  padding-top: 0.5rem;
+}
+
+@media (max-width: 480px) {
+  .masthead {
+    flex-direction: column;
+  }
+}
